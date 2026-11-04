@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en" data-theme="light" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>T.M.M.V (N.S) Boy Scouts · Sri Lanka Scout Association</title>
+<meta name="description" content="T.M.M.V (N.S) Boy Scouts, Thambiluvil, Akkaraipattu Kalmunai District. Adventure, service and friendship.">
+<meta name="theme-color" content="#0b1f17">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Noto+Sans+Tamil:wght@500;700&family=Fraunces:opsz,wght@9..144,700;9..144,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<header class="nav" id="nav">
+  <a class="brand" href="#top"><span class="fleur">⚜</span> T.M.M.V (N.S) Boy Scouts</a>
+  <button class="menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+  <nav id="menu">
+    <a href="#about" data-i18n="nav_about">About</a>
+    <a href="#leaders" data-i18n="nav_leaders">Leaders</a>
+    <a href="#activities" data-i18n="nav_activities">Activities</a>
+    <a href="#events" data-i18n="nav_events">Events</a>
+    <a href="#roster" data-i18n="nav_roster">Our Scouts</a>
+    <a href="#gallery" data-i18n="nav_gallery">Gallery</a>
+    <a href="#join" class="btn small" data-i18n="nav_join">Join us</a>
+  </nav>
+  <div class="nav-controls">
+    <button id="lang-btn" title="Switch language">தமிழ்</button>
+    <button id="theme-btn" title="Toggle theme">🌙</button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="stars" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <p class="tamil">இலங்கை சாரணர் சங்கம்</p>
+      <p class="eyebrow" data-i18n="hero_eyebrow">Sri Lanka Scout Association · Akkaraipattu Kalmunai District</p>
+      <h1>T.M.M.V (N.S)<br><span data-i18n="hero_title">Boy Scouts</span></h1>
+      <p class="lead" data-i18n="hero_lead">Be prepared. Lead with courage. Serve with a smile. Join a troop that turns every weekend into an adventure.</p>
+      <div class="cta">
+        <a href="#join" class="btn" data-i18n="cta_join">Join the troop</a>
+        <a href="#events" class="btn ghost" data-i18n="cta_events">Upcoming events</a>
+      </div>
+      <div class="launch-countdown" aria-live="polite">
+        <span class="launch-label" data-i18n="launch_label">Website launch countdown</span>
+        <div class="countdown-grid">
+          <div><strong id="launch-days">--</strong><small data-i18n="count_days">Days</small></div>
+          <div><strong id="launch-hours">--</strong><small data-i18n="count_hours">Hours</small></div>
+          <div><strong id="launch-minutes">--</strong><small data-i18n="count_minutes">Minutes</small></div>
+          <div><strong id="launch-seconds">--</strong><small data-i18n="count_seconds">Seconds</small></div>
+        </div>
+        <span class="launch-date" data-i18n="launch_date">Launching 1 January 2027</span>
+      </div>
+    </div>
+    <svg class="scene" viewBox="0 0 1440 320" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <path d="M0 220 L180 120 L320 200 L520 90 L720 210 L930 110 L1130 200 L1300 130 L1440 200 L1440 320 L0 320Z" fill="#12362a"/>
+      <path d="M0 260 L220 180 L400 250 L640 160 L860 250 L1100 170 L1300 250 L1440 210 L1440 320 L0 320Z" fill="#0d2a20"/>
+      <g fill="#081a13">
+        <path d="M90 320 L130 210 L170 320Z"/><path d="M130 320 L175 190 L220 320Z"/>
+        <path d="M1180 320 L1225 200 L1270 320Z"/><path d="M1240 320 L1290 180 L1340 320Z"/>
+        <path d="M1330 320 L1370 215 L1410 320Z"/>
+      </g>
+      <path d="M0 320 L0 292 Q360 270 720 292 T1440 288 L1440 320Z" fill="#081a13"/>
+      <g transform="translate(470 238)">
+        <path d="M0 82 L70 0 L140 82Z" fill="#e0a526"/>
+        <path d="M70 0 L70 82 L28 82Z" fill="#c98a12"/>
+        <path d="M70 82 L52 82 L70 38 L88 82Z" fill="#3a2a05"/>
+      </g>
+      <g transform="translate(790 262)">
+        <ellipse cx="30" cy="62" rx="64" ry="12" fill="#ffb347" opacity=".18" class="glow"/>
+        <rect x="4" y="54" width="52" height="7" rx="3" fill="#4a2f12" transform="rotate(-8 30 57)"/>
+        <rect x="4" y="54" width="52" height="7" rx="3" fill="#5c3a16" transform="rotate(8 30 57)"/>
+        <path class="flame" d="M30 56 C8 46 20 28 28 8 C34 26 52 34 30 56Z" fill="#ff8a1f"/>
+        <path class="flame f2" d="M30 56 C18 48 26 38 30 26 C36 38 44 46 30 56Z" fill="#ffd25a"/>
+      </g>
+    </svg>
+  </section>
+
+  <section class="stats">
+    <div class="stat"><b id="stat-scouts" data-count="0">0</b><span data-i18n="stat_scouts">Active scouts</span></div>
+    <div class="stat"><b data-count="1">0</b><span data-i18n="stat_master">Scout Master</span></div>
+    <div class="stat"><b data-count="1">0</b><span data-i18n="stat_troop">Proud troop</span></div>
+    <div class="stat"><b data-count="2026">0</b><span data-i18n="stat_year">Census year</span></div>
+  </section>
+
+  <section id="about" class="section reveal">
+    <p class="kicker" data-i18n="about_kicker">About us</p>
+    <h2 data-i18n="about_title">Building character, one adventure at a time</h2>
+    <p class="intro" data-i18n="about_text">We are the T.M.M.V (N.S) Boy Scouts, the scout troop of Km/Tk/Thambiluvil M.M.V. (National School), part of the Sri Lanka Scout Association, Akkaraipattu Kalmunai District. Our scouts learn practical skills, lead their patrols and serve their community.</p>
+    <div class="cards three">
+      <article class="card"><span class="icon">🧭</span><h3 data-i18n="card_leadership">Leadership</h3><p data-i18n="card_leadership_desc">Patrol leaders plan activities and run meetings, learning to lead by doing.</p></article>
+      <article class="card"><span class="icon">🏕️</span><h3 data-i18n="card_outdoor">Outdoor life</h3><p data-i18n="card_outdoor_desc">Day hikes, camp-outs and trainings that teach teamwork and resilience.</p></article>
+      <article class="card"><span class="icon">🤝</span><h3 data-i18n="card_service">Service</h3><p data-i18n="card_service_desc">Clean-up drives, tree planting and helping hands wherever the village needs them.</p></article>
+    </div>
+  </section>
+
+  <section id="leaders" class="section alt reveal">
+    <div class="wrap">
+      <p class="kicker" data-i18n="leaders_kicker">Leadership</p>
+      <h2 data-i18n="leaders_title">Meet our leaders</h2>
+      <div class="leaders" id="leaders-grid"></div>
+    </div>
+  </section>
+
+  <section id="activities" class="section reveal">
+    <p class="kicker" data-i18n="activities_kicker">What we do</p>
+    <h2 data-i18n="activities_title">Skills for life</h2>
+    <div class="grid-icons">
+      <div class="tile-i"><span>⛺</span><span data-i18n="act_camping">Camping</span></div>
+      <div class="tile-i"><span>🥾</span><span data-i18n="act_hiking">Hiking</span></div>
+      <div class="tile-i"><span>🪢</span><span data-i18n="act_knots">Knots &amp; lashings</span></div>
+      <div class="tile-i"><span>🩹</span><span data-i18n="act_firstaid">First aid</span></div>
+      <div class="tile-i"><span>🗺️</span><span data-i18n="act_nav">Navigation</span></div>
+      <div class="tile-i"><span>🍳</span><span data-i18n="act_cooking">Outdoor cooking</span></div>
+      <div class="tile-i"><span>🌱</span><span data-i18n="act_service">Community service</span></div>
+      <div class="tile-i"><span>🏅</span><span data-i18n="act_badges">Badges &amp; awards</span></div>
+    </div>
+  </section>
+
+  <section id="events" class="section alt reveal">
+    <div class="wrap">
+      <p class="kicker" data-i18n="events_kicker">Calendar</p>
+      <h2 data-i18n="events_title">Upcoming events</h2>
+      <ul class="events" id="event-list"></ul>
+    </div>
+  </section>
+
+  <section id="roster" class="section dark reveal">
+    <div class="wrap">
+      <p class="kicker" data-i18n="roster_kicker">Our scouts</p>
+      <h2 data-i18n="roster_title">The troop</h2>
+      <p class="intro light" data-i18n="roster_desc">The young scouts who make our troop what it is.</p>
+      <div class="roster" id="roster-grid"></div>
+      <div id="add-member-form" class="edit-ui">
+        <h3>➕ <span data-i18n="add_title">Add New Member</span></h3>
+        <div class="form-row">
+          <input type="text" id="new-name" placeholder="Full name / முழு பெயர்">
+          <select id="new-role">
+            <option value="Scout">Scout</option>
+            <option value="Assistant Leader">Assistant Leader</option>
+            <option value="Troop Leader">Troop Leader</option>
+            <option value="Scout Master">Scout Master</option>
+          </select>
+        </div>
+        <button onclick="addMember()" data-i18n="add_btn">Add Member</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="promise reveal">
+    <blockquote data-i18n="promise_text">"On my honour I promise that I will do my best to do my duty to God and to the country, to help other people, and to keep the Scout Law."</blockquote>
+    <p data-i18n="promise_label">The Scout Promise</p>
+  </section>
+
+  <section id="gallery" class="section reveal">
+    <p class="kicker" data-i18n="gallery_kicker">Gallery</p>
+    <h2 data-i18n="gallery_title">Trail moments</h2>
+    <div class="trail-empty">
+      <span aria-hidden="true">🏕️</span>
+      <h3 data-i18n="trail_empty_title">No moments are available from the trail yet</h3>
+      <p data-i18n="trail_empty_text">Our adventure gallery is waiting for its first photos. Check back after our next troop activity!</p>
+    </div>
+    <div class="gallery" id="trail-gallery"></div>
+  </section>
+
+  <section id="join" class="section alt reveal">
+    <div class="wrap join">
+      <div>
+        <p class="kicker" data-i18n="join_kicker">Join us</p>
+        <h2 data-i18n="join_title">Ready for the adventure?</h2>
+        <p class="intro" data-i18n="join_text">Male Students of Thambiluvil M.M.V. are welcome to try a session. Fill in this form and your enquiry will be sent to our Scout Master.</p>
+        <ul class="facts" id="facts"></ul>
+      </div>
+      <form class="form" id="join-form" action="https://formsubmit.co/mrpiravin38@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New T.M.M.V Boy Scouts website enquiry">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="true">
+        <label><span data-i18n="form_name">Parent / guardian name</span><input name="name" required></label>
+        <label>Email<input type="email" name="email" required></label>
+        <label><span data-i18n="form_age">Scout's age</span><input type="number" name="age" min="5" max="25" required></label>
+        <button class="btn" type="submit" data-i18n="form_submit">Send enquiry</button>
+        <p id="form-msg" role="status"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p class="tamil">இலங்கை சாரணர் சங்கம் · அக்கரைப்பற்று கல்முனை மாவட்டம்</p>
+  <p>© <span id="year"></span> T.M.M.V (N.S) Boy Scouts · Builted by Piravin and hosted on GitHub Pages</p>
+</footer>
+
+<!-- SAVE BAR -->
+<div id="save-bar">
+  <button id="save-btn" onclick="saveWebsite()">💾 <span data-i18n="save_btn">Save & Download HTML</span></button>
+  <button id="lock-btn" onclick="lockMode()">🔒 <span data-i18n="lock_btn">Lock</span></button>
+</div>
+
+<script src="script.js" defer></script>
+
+</body>
+</html>   
