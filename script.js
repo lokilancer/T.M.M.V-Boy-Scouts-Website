@@ -57,7 +57,7 @@ const I18N = {
     promise_text:"\u201cOn my honour I promise that I will do my best to do my duty to God and to the country, to help other people, and to keep the Scout Law.\u201d",promise_label:"The Scout Promise",
     gallery_kicker:"Gallery",gallery_title:"Moments from the trail",gal_1:"Training day",gal_2:"Summit hike",gal_3:"Service day",gal_4:"Campfire night",
     join_kicker:"Join us",join_title:"Ready for the adventure?",join_text:"Students of Thambiluvil M.M.V. are welcome to try a session. Fill in the form and your email app will open with the details ready to send to our Scout Master.",
-    form_name:"Parent / guardian name",form_age:"Scout's age",form_submit:"Send enquiry",
+    form_scout_name:"Scout's full name",form_name:"Parent / guardian name",form_age:"Scout's age",form_submit:"Send enquiry",
     save_btn:"Save & Download HTML",lock_btn:"Lock"
   },
   ta: {
@@ -80,7 +80,7 @@ const I18N = {
     promise_text:"\u201cஎன் மதிப்பிற்காக, கடவுள் மற்றும் நாட்டிற்கு என் கடமையை செய்ய, மற்றவர்களுக்கு உதவு, சாரணர் விதிகளை கடைபிடிக்க, என் சிறந்ததை செய்வேன் என்று உறுதி கூறுகிறேன்.\u201d",promise_label:"சாரணர் உறுதிமொழி",
     gallery_kicker:"படக்காட்சிகள்",gallery_title:"பாதையிலிருந்து நினைவுகள்",gal_1:"பயிற்சி நாள்",gal_2:"காடு நடை",gal_3:"சேவை நாள்",gal_4:"தீப்பொறி இரவு",
     join_kicker:"சேர",join_title:"விருதுக்காக தயாரா?",join_text:"தம்பிலுவில் M.M.V. மாணவர்கள் ஒரு அமர்வை முயற்சி செய்ய வரவேற்கப்படுகிறார்கள். படிவத்தை நிரப்பவும், உங்கள் மின்னஞ்சல் செயலி எங்கள் சாரணர் தலைவருக்கு அனுப்ப தயாராக திறக்கும்.",
-    form_name:"காப்புதாரர் பெயர்",form_age:"சாரணர் வயது",form_submit:"கேடீவை அனுப்பு",
+    form_scout_name:"சாரணரின் முழுப் பெயர்",form_name:"பெற்றோர் / பாதுகாவலர் பெயர்",form_age:"சாரணர் வயது",form_submit:"விசாரணையை அனுப்பு",
     save_btn:"சேமி & HTML டைவ்லோட்",lock_btn:"பூட்டு"
   }
 };
