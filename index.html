@@ -132,6 +132,8 @@
       <p class="kicker" data-i18n="roster_kicker">Our scouts</p>
       <h2 data-i18n="roster_title">The troop</h2>
       <p class="intro light" data-i18n="roster_desc">The young scouts who make our troop what it is.</p>
+      <label class="scout-search-label" for="scout-search">🔎 Search scouts / சாரணர்களைத் தேடுக</label>
+      <input id="scout-search" class="scout-search" type="search" placeholder="Search by name or role / பெயர் அல்லது பதவி" oninput="filterScouts(this.value)" autocomplete="off">
       <div class="roster" id="roster-grid"></div>
       <div id="add-member-form" class="edit-ui">
         <h3>➕ <span data-i18n="add_title">Add New Member</span></h3>
