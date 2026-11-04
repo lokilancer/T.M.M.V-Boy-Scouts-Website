@@ -33,6 +33,8 @@ const EVENTS = [
 
 const TROOP_EMAIL = "mrpiravin38@gmail.com";
 
+const SCOUT_ROLE_OVERRIDES = (() => { try { return JSON.parse(localStorage.getItem("tm-mv-scout-roles") || "{}"); } catch { return {}; } })();
+
 /* ===================  END OF EDIT AREA  =================== */
 
 /* ===== TRANSLATIONS ===== */
@@ -176,7 +178,9 @@ function renderRoster() {
     { name: ASSISTANT_LEADER.name, role: ASSISTANT_LEADER.role, lead: true }
   ].concat(SCOUTS.filter(n => n !== ASSISTANT_LEADER.name).map(n => ({ name: n, role: "Scout", lead: false })));
   everyone.forEach((p, i) => {
+    p.role = SCOUT_ROLE_OVERRIDES[p.name] || p.role;
     const d = document.createElement("div");
+    d.dataset.name = p.name.toLowerCase();
     d.className = "scout" + (p.lead ? " leader" : "");
     d.innerHTML = `<div class="avatar">${esc(initials(p.name))}</div><b>${esc(p.name)}</b><small>${esc(p.role)}</small>
       <div class="edit-ui">
@@ -261,13 +265,21 @@ function removeScout(i) {
 }
 
 function changeScoutRole(i, newRole) {
-  if (i === 0) { TROOP_LEADER.role = newRole; }
-  else {
-    const idx = i - 1;
-    // For simplicity, scouts stay as scouts in the array; role changes reflected in render
-    // We'll handle this by re-rendering with updated role
-  }
+  const everyone = [
+    { name: TROOP_LEADER.name, role: TROOP_LEADER.role },
+    { name: ASSISTANT_LEADER.name, role: ASSISTANT_LEADER.role }
+  ].concat(SCOUTS.filter(n => n !== ASSISTANT_LEADER.name).map(n => ({ name: n, role: "Scout" })));
+  const person = everyone[i];
+  if (!person) return;
+  SCOUT_ROLE_OVERRIDES[person.name] = newRole;
+  try { localStorage.setItem("tm-mv-scout-roles", JSON.stringify(SCOUT_ROLE_OVERRIDES)); } catch (error) { console.warn("Could not save roles locally.", error); }
   renderRoster();
+}
+function filterScouts(query) {
+  const term = query.trim().toLocaleLowerCase();
+  document.querySelectorAll("#roster-grid .scout").forEach(card => {
+    card.hidden = !card.dataset.name.includes(term) && !card.textContent.toLocaleLowerCase().includes(term);
+  });
 }
 
 function removeLeader(key) {
@@ -368,28 +380,6 @@ function updateLaunchCountdown() {
     "launch-seconds": Math.floor((remaining % 60000) / 1000)
   };
   Object.entries(values).forEach(([id, value]) => {
-    const el = document.getElementById(id);
-    if (el) el.textContent = String(value).padStart(2, "0");
-  });
-  if (remaining === 0) {
-    const label = document.querySelector(".launch-label");
-    if (label) label.textContent = currentLang === "ta" ? "இணையதளம் தொடங்கிவிட்டது!" : "Our website is now live!";
-  }
-}
-updateLaunchCountdown();
-setInterval(updateLaunchCountdown, 1000);
-
-/* ===== WEBSITE LAUNCH COUNTDOWN ===== */
-function updateLaunchCountdown() {
-  const launchAt = new Date("2027-01-01T00:00:00+05:30").getTime();
-  const remaining = Math.max(0, launchAt - Date.now());
-  const units = {
-    "launch-days": Math.floor(remaining / 86400000),
-    "launch-hours": Math.floor((remaining % 86400000) / 3600000),
-    "launch-minutes": Math.floor((remaining % 3600000) / 60000),
-    "launch-seconds": Math.floor((remaining % 60000) / 1000)
-  };
-  Object.entries(units).forEach(([id, value]) => {
     const el = document.getElementById(id);
     if (el) el.textContent = String(value).padStart(2, "0");
   });
