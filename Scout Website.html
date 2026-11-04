@@ -218,6 +218,16 @@ body.edit-mode #add-member-form{display:block}
         <a href="#join" class="btn" data-i18n="cta_join">Join the troop</a>
         <a href="#events" class="btn ghost" data-i18n="cta_events">Upcoming events</a>
       </div>
+      <div class="launch-countdown" aria-live="polite">
+        <span class="launch-label" data-i18n="launch_label">Website launch countdown</span>
+        <div class="countdown-grid">
+          <div><strong id="launch-days">--</strong><small data-i18n="count_days">Days</small></div>
+          <div><strong id="launch-hours">--</strong><small data-i18n="count_hours">Hours</small></div>
+          <div><strong id="launch-minutes">--</strong><small data-i18n="count_minutes">Minutes</small></div>
+          <div><strong id="launch-seconds">--</strong><small data-i18n="count_seconds">Seconds</small></div>
+        </div>
+        <span class="launch-date" data-i18n="launch_date">Launching 1 January 2027</span>
+      </div>
     </div>
     <svg class="scene" viewBox="0 0 1440 320" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
       <path d="M0 220 L180 120 L320 200 L520 90 L720 210 L930 110 L1130 200 L1300 130 L1440 200 L1440 320 L0 320Z" fill="#12362a"/>
@@ -321,9 +331,13 @@ body.edit-mode #add-member-form{display:block}
 
   <section id="gallery" class="section reveal">
     <p class="kicker" data-i18n="gallery_kicker">Gallery</p>
-    <h2 data-i18n="gallery_title">No Moments are available from the trail</h2>
-    <div class="gallery">
+    <h2 data-i18n="gallery_title">Trail moments</h2>
+    <div class="trail-empty">
+      <span aria-hidden="true">🏕️</span>
+      <h3 data-i18n="trail_empty_title">No moments are available from the trail yet</h3>
+      <p data-i18n="trail_empty_text">Our adventure gallery is waiting for its first photos. Check back after our next troop activity!</p>
     </div>
+    <div class="gallery" id="trail-gallery"></div>
   </section>
 
   <section id="join" class="section alt reveal">
@@ -530,8 +544,10 @@ function renderLeaders() {
 function renderRoster() {
   const grid = document.getElementById("roster-grid");
   grid.innerHTML = "";
-  const everyone = [{ name: TROOP_LEADER.name, role: TROOP_LEADER.role, lead: true }]
-    .concat(SCOUTS.map(n => ({ name: n, role: "Scout", lead: false })));
+  const everyone = [
+    { name: TROOP_LEADER.name, role: TROOP_LEADER.role, lead: true },
+    { name: ASSISTANT_LEADER.name, role: ASSISTANT_LEADER.role, lead: true }
+  ].concat(SCOUTS.filter(n => n !== ASSISTANT_LEADER.name).map(n => ({ name: n, role: "Scout", lead: false })));
   everyone.forEach((p, i) => {
     const d = document.createElement("div");
     d.className = "scout" + (p.lead ? " leader" : "");
@@ -605,11 +621,14 @@ function addMember() {
 }
 
 function removeScout(i) {
-  const everyone = [{ name: TROOP_LEADER.name, role: TROOP_LEADER.role, lead: true }].concat(SCOUTS.map(n => ({ name: n, role: "Scout", lead: false })));
-  if (i === 0) { alert("Cannot remove Troop Leader from roster."); return; }
-  const idx = i - 1;
-  if (confirm(`Remove ${everyone[i].name}?`)) {
-    SCOUTS.splice(idx, 1);
+  const everyone = [
+    { name: TROOP_LEADER.name, role: TROOP_LEADER.role, lead: true },
+    { name: ASSISTANT_LEADER.name, role: ASSISTANT_LEADER.role, lead: true }
+  ].concat(SCOUTS.filter(n => n !== ASSISTANT_LEADER.name).map(n => ({ name: n, role: "Scout", lead: false })));
+  if (i < 2) { alert("Troop leaders are managed in the Leadership section."); return; }
+  const scoutIndex = SCOUTS.indexOf(everyone[i].name);
+  if (scoutIndex >= 0 && confirm(`Remove ${everyone[i].name}?`)) {
+    SCOUTS.splice(scoutIndex, 1);
     renderRoster();
   }
 }
