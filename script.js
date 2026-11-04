@@ -33,7 +33,6 @@ const EVENTS = [
 
 const TROOP_EMAIL = "mrpiravin38@gmail.com";
 
-const SCOUT_ROLE_OVERRIDES = (() => { try { return JSON.parse(localStorage.getItem("tm-mv-scout-roles") || "{}"); } catch { return {}; } })();
 
 /* ===================  END OF EDIT AREA  =================== */
 
@@ -128,46 +127,19 @@ function renderLeaders() {
       <h3>${esc(SCOUT_MASTER.name)}</h3>
       <p class="role">${esc(SCOUT_MASTER.role)}${currentLang==="ta" ? " · " + esc(roleTa[SCOUT_MASTER.role]) : ""}</p>
       <p>${currentLang==="ta" ? "படையை வழிநடக்கிறது மற்றும் ஒவ்வொரு சாரணரின் பயிற்சியையும், தட்டை வேலையையும் வளர்ச்சியையும் ஆதரிக்கிறது." : "Guides the troop and supports every scout's training, badge work and growth."}</p>
-      <div class="edit-ui">
-        <button class="edit-btn" onclick="removeLeader('SM')">✕</button>
-        <div class="role-select"><select onchange="changeLeaderRole('SM',this.value)">
-          <option ${SCOUT_MASTER.role==="Scout Master"?"selected":""}>Scout Master</option>
-          <option ${SCOUT_MASTER.role==="Troop Leader"?"selected":""}>Troop Leader</option>
-          <option ${SCOUT_MASTER.role==="Assistant Leader"?"selected":""}>Assistant Leader</option>
-        </select></div>
-      </div>
     </article>
     <article class="leader-card" id="piravin-card">
       <div class="avatar big">${esc(initials(TROOP_LEADER.name))}</div>
       <h3>${esc(TROOP_LEADER.name)}</h3>
       <p class="role">${esc(TROOP_LEADER.role)}${currentLang==="ta" ? " · " + esc(roleTa[TROOP_LEADER.role]) : ""}</p>
       <p>${currentLang==="ta" ? "எங்கள் படைகளை வழிநடக்கிறது, செயல்பாடுகளை திட்டமிட்டு, முழு படையிற்கும் மாதிரியாக இருக்கிறது." : "Leads our patrols, plans activities and sets the example for the whole troop."}</p>
-      <div class="edit-ui">
-        <button class="edit-btn" onclick="removeLeader('TL')">✕</button>
-        <div class="role-select"><select onchange="changeLeaderRole('TL',this.value)">
-          <option ${TROOP_LEADER.role==="Scout Master"?"selected":""}>Scout Master</option>
-          <option ${TROOP_LEADER.role==="Troop Leader"?"selected":""}>Troop Leader</option>
-          <option ${TROOP_LEADER.role==="Assistant Leader"?"selected":""}>Assistant Leader</option>
-        </select></div>
-      </div>
     </article>
     <article class="leader-card">
       <div class="avatar big">${esc(initials(ASSISTANT_LEADER.name))}</div>
       <h3>${esc(ASSISTANT_LEADER.name)}</h3>
       <p class="role">${esc(ASSISTANT_LEADER.role)}${currentLang==="ta" ? " · " + esc(roleTa[ASSISTANT_LEADER.role]) : ""}</p>
       <p>${currentLang==="ta" ? "படை தலைவருடன் இணைந்து பணியாற்றி, சாரணர்களுக்கு ஆதரவு அளிக்கிறது." : "Works alongside the Troop Leader, supporting scouts in their training and growth."}</p>
-      <div class="edit-ui">
-        <button class="edit-btn" onclick="removeLeader('AL')">✕</button>
-        <div class="role-select"><select onchange="changeLeaderRole('AL',this.value)">
-          <option ${ASSISTANT_LEADER.role==="Scout Master"?"selected":""}>Scout Master</option>
-          <option ${ASSISTANT_LEADER.role==="Troop Leader"?"selected":""}>Troop Leader</option>
-          <option ${ASSISTANT_LEADER.role==="Assistant Leader"?"selected":""}>Assistant Leader</option>
-        </select></div>
-      </div>
     </article>`;
-  // Re-attach 4-click listener
-  const pc = document.getElementById("piravin-card");
-  if (pc) pc.addEventListener("click", onPiravinClick);
 }
 
 function renderRoster() {
@@ -178,20 +150,10 @@ function renderRoster() {
     { name: ASSISTANT_LEADER.name, role: ASSISTANT_LEADER.role, lead: true }
   ].concat(SCOUTS.filter(n => n !== ASSISTANT_LEADER.name).map(n => ({ name: n, role: "Scout", lead: false })));
   everyone.forEach((p, i) => {
-    p.role = SCOUT_ROLE_OVERRIDES[p.name] || p.role;
     const d = document.createElement("div");
     d.dataset.name = p.name.toLowerCase();
     d.className = "scout" + (p.lead ? " leader" : "");
-    d.innerHTML = `<div class="avatar">${esc(initials(p.name))}</div><b>${esc(p.name)}</b><small>${esc(p.role)}</small>
-      <div class="edit-ui">
-        <button class="edit-btn" onclick="removeScout(${i})">✕</button>
-        <div class="role-select"><select onchange="changeScoutRole(${i},this.value)">
-          <option ${p.role==="Scout"?"selected":""}>Scout</option>
-          <option ${p.role==="Assistant Leader"?"selected":""}>Assistant Leader</option>
-          <option ${p.role==="Troop Leader"?"selected":""}>Troop Leader</option>
-          <option ${p.role==="Scout Master"?"selected":""}>Scout Master</option>
-        </select></div>
-      </div>`;
+    d.innerHTML = `<div class="avatar">${esc(initials(p.name))}</div><b>${esc(p.name)}</b><small>${esc(p.role)}</small>`;
     grid.appendChild(d);
   });
   document.getElementById("stat-scouts").dataset.count = everyone.length;
@@ -204,119 +166,6 @@ function renderFacts() {
     <li>🧑‍🏫 ${esc(SCOUT_MASTER.role)}: ${esc(SCOUT_MASTER.name)}</li>
     <li>⭐ ${esc(TROOP_LEADER.role)}: ${esc(TROOP_LEADER.name)}</li>
     <li>🤝 ${esc(ASSISTANT_LEADER.role)}: ${esc(ASSISTANT_LEADER.name)}</li>`;
-}
-
-/* ===== 4-CLICK + PASSWORD ===== */
-const ADMIN_PASS = "0538";
-let clickCount = 0, clickTimer = null, isEditMode = false;
-
-function onPiravinClick(e) {
-  if (isEditMode) return;
-  if (e.target.closest(".edit-ui")) return;
-  clickCount++;
-  clearTimeout(clickTimer);
-  clickTimer = setTimeout(() => { clickCount = 0; }, 1500);
-  if (clickCount >= 4) {
-    clickCount = 0;
-    const pass = prompt("🔐 Enter admin password:");
-    if (pass === ADMIN_PASS) {
-      isEditMode = true;
-      document.body.classList.add("edit-mode");
-    } else if (pass !== null) {
-      alert("❌ Wrong password.");
-    }
-  }
-}
-
-function lockMode() {
-  isEditMode = false;
-  document.body.classList.remove("edit-mode");
-}
-
-/* ===== EDIT FUNCTIONS ===== */
-function addMember() {
-  const name = document.getElementById("new-name").value.trim();
-  const role = document.getElementById("new-role").value;
-  if (!name) return alert("Enter a name.");
-  SCOUTS.push(name);
-  if (role !== "Scout") {
-    // Update leader object
-    if (role === "Scout Master") SCOUT_MASTER.name = name;
-    else if (role === "Troop Leader") TROOP_LEADER.name = name;
-    else if (role === "Assistant Leader") ASSISTANT_LEADER.name = name;
-  }
-  document.getElementById("new-name").value = "";
-  renderLeaders();
-  renderRoster();
-  renderFacts();
-}
-
-function removeScout(i) {
-  const everyone = [
-    { name: TROOP_LEADER.name, role: TROOP_LEADER.role, lead: true },
-    { name: ASSISTANT_LEADER.name, role: ASSISTANT_LEADER.role, lead: true }
-  ].concat(SCOUTS.filter(n => n !== ASSISTANT_LEADER.name).map(n => ({ name: n, role: "Scout", lead: false })));
-  if (i < 2) { alert("Troop leaders are managed in the Leadership section."); return; }
-  const scoutIndex = SCOUTS.indexOf(everyone[i].name);
-  if (scoutIndex >= 0 && confirm(`Remove ${everyone[i].name}?`)) {
-    SCOUTS.splice(scoutIndex, 1);
-    renderRoster();
-  }
-}
-
-function changeScoutRole(i, newRole) {
-  const everyone = [
-    { name: TROOP_LEADER.name, role: TROOP_LEADER.role },
-    { name: ASSISTANT_LEADER.name, role: ASSISTANT_LEADER.role }
-  ].concat(SCOUTS.filter(n => n !== ASSISTANT_LEADER.name).map(n => ({ name: n, role: "Scout" })));
-  const person = everyone[i];
-  if (!person) return;
-  SCOUT_ROLE_OVERRIDES[person.name] = newRole;
-  try { localStorage.setItem("tm-mv-scout-roles", JSON.stringify(SCOUT_ROLE_OVERRIDES)); } catch (error) { console.warn("Could not save roles locally.", error); }
-  renderRoster();
-}
-function filterScouts(query) {
-  const term = query.trim().toLocaleLowerCase();
-  document.querySelectorAll("#roster-grid .scout").forEach(card => {
-    card.hidden = !card.dataset.name.includes(term) && !card.textContent.toLocaleLowerCase().includes(term);
-  });
-}
-
-function removeLeader(key) {
-  alert("Leaders cannot be removed. Use role change instead.");
-}
-
-function changeLeaderRole(key, newRole) {
-  if (key === "SM") SCOUT_MASTER.role = newRole;
-  else if (key === "TL") TROOP_LEADER.role = newRole;
-  else if (key === "AL") ASSISTANT_LEADER.role = newRole;
-  renderLeaders();
-  renderRoster();
-  renderFacts();
-}
-
-/* ===== SAVE & DOWNLOAD ===== */
-function saveWebsite() {
-  const clone = document.documentElement.cloneNode(true);
-  // Strip edit UI
-  clone.querySelectorAll(".edit-ui").forEach(el => el.remove());
-  clone.querySelectorAll("#add-member-form").forEach(el => el.remove());
-  const cloneBody = clone.querySelector("body");
-  if (cloneBody) cloneBody.classList.remove("edit-mode");
-  const saveBar = clone.querySelector("#save-bar");
-  if (saveBar) saveBar.remove();
-  // Remove edit-mode style rules (keep it simple: just remove the class)
-  let html = "<!DOCTYPE html>\n" + clone.outerHTML;
-  const blob = new Blob([html], { type: "text/html" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "index.html";
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-  alert("✅ Saved! Upload the downloaded index.html to GitHub Pages.");
 }
 
 /* ===== EVENTS ===== */
@@ -391,7 +240,7 @@ function updateLaunchCountdown() {
 updateLaunchCountdown();
 setInterval(updateLaunchCountdown, 1000);
 
-/* Join enquiries are submitted securely through the FormSubmit form endpoint in index.html. */
+/* Registration form connection will be completed using the Google Form supplied by the troop owner. */
 
 /* ===== INIT ===== */
 renderLeaders();
