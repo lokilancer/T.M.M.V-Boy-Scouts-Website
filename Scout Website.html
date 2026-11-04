@@ -715,6 +715,28 @@ document.getElementById("year").textContent = new Date().getFullYear();
 function updateLaunchCountdown() {
   const launchAt = new Date("2027-01-01T00:00:00+05:30").getTime();
   const remaining = Math.max(0, launchAt - Date.now());
+  const values = {
+    "launch-days": Math.floor(remaining / 86400000),
+    "launch-hours": Math.floor((remaining % 86400000) / 3600000),
+    "launch-minutes": Math.floor((remaining % 3600000) / 60000),
+    "launch-seconds": Math.floor((remaining % 60000) / 1000)
+  };
+  Object.entries(values).forEach(([id, value]) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = String(value).padStart(2, "0");
+  });
+  if (remaining === 0) {
+    const label = document.querySelector(".launch-label");
+    if (label) label.textContent = currentLang === "ta" ? "இணையதளம் தொடங்கிவிட்டது!" : "Our website is now live!";
+  }
+}
+updateLaunchCountdown();
+setInterval(updateLaunchCountdown, 1000);
+
+/* ===== WEBSITE LAUNCH COUNTDOWN ===== */
+function updateLaunchCountdown() {
+  const launchAt = new Date("2027-01-01T00:00:00+05:30").getTime();
+  const remaining = Math.max(0, launchAt - Date.now());
   const units = {
     "launch-days": Math.floor(remaining / 86400000),
     "launch-hours": Math.floor((remaining % 86400000) / 3600000),
