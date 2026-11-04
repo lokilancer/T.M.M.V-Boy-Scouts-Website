@@ -162,10 +162,24 @@
         <p class="intro" data-i18n="join_text">Male Students of Thambiluvil M.M.V. are welcome to try a session. Fill in this form and your enquiry will be sent to our Scout Master.</p>
         <ul class="facts" id="facts"></ul>
       </div>
-      <div class="form registration-link">
-        <p>Complete the official registration form using the button below. Your answers will be submitted directly to our Google Form.</p>
-        <a class="btn" href="https://forms.gle/46LyYoBZfnToigWN6" target="_blank" rel="noopener noreferrer">Open registration form ↗</a>
-        <p class="form-note">After submitting, your registration will be recorded in Google Forms.</p>
+      <div class="form registration-options">
+        <h3>Send an enquiry by email</h3>
+        <form class="form" id="join-form" action="https://formsubmit.co/mrpiravin38@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="New T.M.M.V Boy Scouts website enquiry">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="true">
+          <label><span data-i18n="form_scout_name">Scout's full name</span><input name="scout_name" autocomplete="name" required></label>
+          <label><span data-i18n="form_name">Parent / guardian name</span><input name="guardian_name" required></label>
+          <label>Email<input type="email" name="email" autocomplete="email" required></label>
+          <label><span data-i18n="form_age">Scout's age</span><input type="number" name="age" min="5" max="25" required></label>
+          <button class="btn" type="submit" data-i18n="form_submit">Send enquiry</button>
+          <p id="form-msg" role="status"></p>
+        </form>
+        <div class="registration-fallback">
+          <h3>Having trouble submitting?</h3>
+          <p>If the email form shows an error or does not submit, use our Google Form instead. It is an alternative way to send your registration.</p>
+          <a class="btn ghost" href="https://forms.gle/46LyYoBZfnToigWN6" target="_blank" rel="noopener noreferrer">Open Google registration form ↗</a>
+        </div>
       </div>
     </div>
   </section>
