@@ -135,19 +135,6 @@
       <label class="scout-search-label" for="scout-search">🔎 Search scouts / சாரணர்களைத் தேடுக</label>
       <input id="scout-search" class="scout-search" type="search" placeholder="Search by name or role / பெயர் அல்லது பதவி" oninput="filterScouts(this.value)" autocomplete="off">
       <div class="roster" id="roster-grid"></div>
-      <div id="add-member-form" class="edit-ui">
-        <h3>➕ <span data-i18n="add_title">Add New Member</span></h3>
-        <div class="form-row">
-          <input type="text" id="new-name" placeholder="Full name / முழு பெயர்">
-          <select id="new-role">
-            <option value="Scout">Scout</option>
-            <option value="Assistant Leader">Assistant Leader</option>
-            <option value="Troop Leader">Troop Leader</option>
-            <option value="Scout Master">Scout Master</option>
-          </select>
-        </div>
-        <button onclick="addMember()" data-i18n="add_btn">Add Member</button>
-      </div>
     </div>
   </section>
 
@@ -195,11 +182,6 @@
   <p>© <span id="year"></span> T.M.M.V (N.S) Boy Scouts · Builted by Piravin and hosted on GitHub Pages</p>
 </footer>
 
-<!-- SAVE BAR -->
-<div id="save-bar">
-  <button id="save-btn" onclick="saveWebsite()">💾 <span data-i18n="save_btn">Save & Download HTML</span></button>
-  <button id="lock-btn" onclick="lockMode()">🔒 <span data-i18n="lock_btn">Lock</span></button>
-</div>
 
 <script src="script.js" defer></script>
 
