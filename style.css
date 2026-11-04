@@ -173,3 +173,6 @@ body.edit-mode #add-member-form{display:block}
   .nav nav a{padding:10px 0}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+
+.scout-search-label{display:block;margin:22px 0 8px;font-weight:700;color:#f3d27a}.scout-search{display:block;width:min(100%,420px);padding:12px 15px;border:1px solid rgba(255,255,255,.28);border-radius:12px;background:rgba(255,255,255,.1);color:#fff;font:inherit}.scout-search::placeholder{color:rgba(255,255,255,.65)}#roster-grid .scout[hidden]{display:none}
