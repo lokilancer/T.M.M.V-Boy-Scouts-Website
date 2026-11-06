@@ -1,6 +1,27 @@
+<div align="center">
+
 # T.M.M.V (N.S) Boy Scouts Website
 
-The troop website is built as a static site and is split into three files:
+**The digital home of our school Scout troop**
+
+[🌐 Visit Scouts Website](https://lokilancer.github.io/T.M.M.V-Boy-Scouts-Website/) · [💻 View Repository](https://github.com/lokilancer/T.M.M.V-Boy-Scouts-Website)
+
+![Website](https://img.shields.io/badge/website-GitHub%20Pages-222222?logo=github)
+![Type](https://img.shields.io/badge/type-Static%20Website-blue)
+
+</div>
+
+---
+
+## About
+
+A website for the **T.M.M.V (N.S) Boy Scouts** troop. The site brings troop information and interactive features together in one place.
+
+## Visit the website
+
+**[Open the T.M.M.V (N.S) Boy Scouts Website](https://lokilancer.github.io/T.M.M.V-Boy-Scouts-Website/)**
+
+## Project structure
 
 - `index.html` — page content and forms
 - `style.css` — layout, colours and responsive styling
@@ -8,17 +29,24 @@ The troop website is built as a static site and is split into three files:
 
 ## Publish with GitHub Pages
 
-1. Open the repository **Settings → Pages**.
-2. Under **Build and deployment**, choose **GitHub Actions** as the source.
-3. Open the **Actions** tab and run **Deploy website to GitHub Pages** (or push a new commit).
-4. When the workflow completes, the live URL appears in **Settings → Pages**.
+The repository includes a workflow at `.github/workflows/deploy.yml` to publish the website from the root of the `main` branch.
 
-A workflow is included at `.github/workflows/deploy.yml` to publish the root of the repository whenever changes are pushed to `main`.
+1. Open **Settings → Pages**.
+2. Set the deployment source to **GitHub Actions**.
+3. Check the **Actions** tab for the deployment workflow.
+4. Once deployment succeeds, open the live website link above.
 
-## Join/enquiry form email
+## Join / enquiry form
 
-The form is configured to submit to `mrpiravin38@gmail.com` using FormSubmit. FormSubmit may send a one-time activation/confirmation email to that inbox the first time the form is used. Open that message and confirm the address before expecting submissions to arrive. The form is hosted on a third-party form service; do not request sensitive personal information from students.
+The form is configured to submit through FormSubmit. The recipient may need to complete a one-time email activation before submissions arrive. The form uses a third-party service; avoid entering sensitive personal information.
 
 ## Website launch
 
-The launch event is scheduled for **1 January 2027**. The homepage includes a live countdown.
+The launch event is scheduled for **1 January 2027**. The homepage includes a countdown.
+
+## Project links
+
+| Resource | Link |
+|---|---|
+| Live Scouts website | https://lokilancer.github.io/T.M.M.V-Boy-Scouts-Website/ |
+| GitHub repository | https://github.com/lokilancer/T.M.M.V-Boy-Scouts-Website |
