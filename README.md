@@ -1,3 +1,5 @@
+<p align="center"><img src="https://raw.githubusercontent.com/lokilancer/TMMV-ROBOTICS/main/assets/loki-lancer-horse.svg" width="112" alt="Loki Lancer blue horse logo"></p>
+
 <div align="center">
 
 # T.M.M.V (N.S) | Boy Scouts
@@ -74,3 +76,7 @@ The homepage countdown is configured for the planned launch date of **1 January 
 If you appreciate this Scout troop website, please consider starring the repository on GitHub.
 
 [![Star on GitHub](https://img.shields.io/badge/⭐%20Star%20this%20repository-GitHub-181717?style=for-the-badge&logo=github)](https://github.com/lokilancer/T.M.M.V-Boy-Scouts-Website/stargazers)
+
+---
+
+<p align="center">Made by <strong>Loki Lancer</strong></p>
